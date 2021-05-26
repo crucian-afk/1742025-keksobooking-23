@@ -1,7 +1,7 @@
 # Личный проект «Кексобукинг»
 
 * Студент: [Jury Smirnoff](https://up.htmlacademy.ru/javascript/23/user/1742025).
-* Наставник: `Неизвестно`.
+* Наставник: [Артем Доба](https://htmlacademy.ru/profile/id618431)
 
 ---
 
