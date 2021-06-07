@@ -29,19 +29,18 @@ function getRandomFloat(min= 0, max = Number.MAX_SAFE_INTEGER, symbolsAfterComma
 
 getRandomFloat(10, 8, 3);
 
-const lat = getRandomFloat(35.65000, 35.70000, 5);
-const lng = getRandomFloat(139.70000, 139.80000, 5);
-const rooms = getRandomInt(1, 10);
 const getRandomArrayElement = (elements) => elements[getRandomInt(0, elements.length - 1)];
 const createArr = ([...source], maxLength) => Array.from(
   { length: Math.min(source.length, 1 + Math.random() * maxLength | 0) },
   () => source.splice(Math.random() * source.length | 0, 1)[0],
 );
-const advertsList = [];
-
 
 const generateAds = (amountOfAds = 1) => {
+  const advertsList = [];
   for (let i = 1; i <= amountOfAds; i++) {
+    const lat = getRandomFloat(35.65000, 35.70000, 5);
+    const lng = getRandomFloat(139.70000, 139.80000, 5);
+    const rooms = getRandomInt(1, 10);
     const ad = {
       author: {
         avatar: '',
