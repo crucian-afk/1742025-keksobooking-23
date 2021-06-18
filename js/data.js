@@ -23,7 +23,7 @@ const generateAds = (amountOfAds = 1) => {
       offer: {
         title: getRandomArrayElement(TITLE_OPTIONS),
         address: `${lat}, ${lng}`,
-        price: getRandomInt(0, 50000),
+        price: getRandomInt(0, 1000000),
         type: getRandomArrayElement(TYPES),
         rooms,
         guests: getRandomInt(rooms, 100),
@@ -49,7 +49,5 @@ const generateAds = (amountOfAds = 1) => {
 
   return advertsList;
 };
-
-generateAds();
 
 export {generateAds};

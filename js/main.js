@@ -1,6 +1,4 @@
-import {getRandomInt, getRandomFloat} from './util.js';
 import {generateAds} from './data.js';
+import './ads-markup.js';
 
 generateAds();
-getRandomInt();
-getRandomFloat();
