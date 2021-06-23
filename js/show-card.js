@@ -35,8 +35,8 @@ for (let i = 0; i < advertise.offer.photos.length; i++) {
   const photo = document.createElement('img');
   photo.src = advertise.offer.photos[i];
   photo.classList.add('popup__photo');
-  photo.width = '45';
-  photo.height = '40';
+  photo.width = 45;
+  photo.height = 40;
   photo.alt = 'Фотография жилья';
   photosFragment.appendChild(photo);
 }
@@ -53,7 +53,7 @@ const houseType = {
 
 popupType.textContent = houseType[advertise.offer.type];
 
-for (let feat of popupFeatures) {
+for (const feat of popupFeatures) {
   let hasFeature = false;
   for (let i = 0; i < popupFeatures.length; i++) {
     if (feat.classList.contains(`popup__feature--${advertise.offer.features[i]}`)) {
