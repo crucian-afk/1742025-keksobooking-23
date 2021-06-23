@@ -1,4 +1,4 @@
 import {generateAds} from './data.js';
-import './ads-markup.js';
+import './show-card.js';
 
 generateAds();
