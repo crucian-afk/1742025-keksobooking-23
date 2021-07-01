@@ -40,7 +40,7 @@ adTitleInput.addEventListener('input', (event) => {
   event.target.reportValidity();
 });
 
-const houseType = adTypeInput.value;
+let houseType = adTypeInput.value;
 
 const priceValidation = (target) => {
   if (target.value < houseTypesPrices[houseType]) {
@@ -56,6 +56,7 @@ const priceValidation = (target) => {
 let minPrice = 0;
 
 adTypeInput.addEventListener('change', (event) => {
+  houseType = event.target.value;
   minPrice = houseTypesPrices[event.target.value];
   adPriceInput.placeholder = minPrice;
   adPriceInput.min = minPrice;
@@ -85,7 +86,7 @@ const roomsValidation = (target) => {
 
 roomCapacity.addEventListener('change', (event) => {
   amountOfRooms = event.target.value;
-  roomsValidation(event.target);
+  roomsValidation(guestsCapacity);
 });
 guestsCapacity.addEventListener('change', (event) => {
   roomsValidation(event.target);
