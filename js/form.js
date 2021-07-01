@@ -91,3 +91,29 @@ roomCapacity.addEventListener('change', (event) => {
 guestsCapacity.addEventListener('change', (event) => {
   roomsValidation(event.target);
 });
+
+const fieldsets = document.querySelectorAll('fieldset');
+const mapFilters = document.querySelector('.map__filters');
+const mapFilter = document.querySelector('.map__filter');
+
+const deactivateForm = () => {
+  adForm.classList.add('ad-form--disabled');
+  mapFilters.classList.add('map__filters--disabled');
+  mapFilter.disabled = true;
+  fieldsets.forEach((fieldset) => {
+    fieldset.disabled = true;
+  });
+};
+
+deactivateForm();
+
+const activateForm = () => {
+  adForm.classList.remove('ad-form--disabled');
+  mapFilters.classList.remove('map__filters--disabled');
+  mapFilter.disabled = false;
+  fieldsets.forEach((fieldset) => {
+    fieldset.disabled = false;
+  });
+};
+
+activateForm();
