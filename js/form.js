@@ -116,4 +116,4 @@ const activateForm = () => {
   });
 };
 
-activateForm();
+export {activateForm};

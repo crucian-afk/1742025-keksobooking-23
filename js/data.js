@@ -39,9 +39,9 @@ const generateAds = (amountOfAds = 1) => {
       },
     };
     if (i <= 9) {
-      ad.author.avatar = `img/avatars/user0${i}.png`;
+      ad.author.avatar = `img/avatars/user0${getRandomInt(i, 9)}.png`;
     } else {
-      ad.author.avatar = `img/avatars/user${i}.png`;
+      ad.author.avatar = `img/avatars/user${getRandomInt(10, 11)}.png`;
     }
 
     advertsList.push(ad);

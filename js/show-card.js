@@ -1,18 +1,9 @@
 import {generateAds} from './data.js';
 
 const advertise = generateAds(1)[0];
-const card = document.querySelector('#card').content;
-const popupTitle = card.querySelector('.popup__title');
-const popupAddress = card.querySelector('.popup__text--address');
-const popupPrice = card.querySelector('.popup__text--price');
-const popupType = card.querySelector('.popup__type');
-const popupCapacity = card.querySelector('.popup__text--capacity');
-const popupTime = card.querySelector('.popup__text--time');
-const popupFeatures = card.querySelectorAll('.popup__feature');
-const popupDescription = card.querySelector('.popup__description');
-const popupPhotos = card.querySelector('.popup__photos');
-const popupPhoto = card.querySelector('.popup__photo');
-const popupAvatar = card.querySelector('.popup__avatar');
+const popupElement = document.querySelector('#card').content
+  .querySelector('.popup');
+
 
 const houseType = {
   flat: 'Квартира',
@@ -23,6 +14,18 @@ const houseType = {
 };
 
 const generateCard = (ad) => {
+  const card = popupElement.cloneNode(true);
+  const popupTitle = card.querySelector('.popup__title');
+  const popupAddress = card.querySelector('.popup__text--address');
+  const popupPrice = card.querySelector('.popup__text--price');
+  const popupType = card.querySelector('.popup__type');
+  const popupCapacity = card.querySelector('.popup__text--capacity');
+  const popupTime = card.querySelector('.popup__text--time');
+  const popupFeatures = card.querySelectorAll('.popup__feature');
+  const popupDescription = card.querySelector('.popup__description');
+  const popupPhotos = card.querySelector('.popup__photos');
+  const popupPhoto = card.querySelector('.popup__photo');
+  const popupAvatar = card.querySelector('.popup__avatar');
   popupTitle.textContent = ad.offer.title;
   popupAddress.textContent = ad.offer.address;
   popupPrice.textContent = `${String(ad.offer.price)} ₽/ночь`;
@@ -67,9 +70,8 @@ const generateCard = (ad) => {
     }
   }
 
-  const adField = document.querySelector('#map-canvas');
+  return card;
 
-  adField.appendChild(card.cloneNode(true));
 };
 
-generateCard(advertise);
+export {generateCard, advertise};
