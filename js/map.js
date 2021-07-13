@@ -1,6 +1,6 @@
 import {activateForm} from './form.js';
-import './data.js';
-import {generateCard, advertise} from './show-card.js';
+import {generateCard} from './show-card.js';
+import {adsArray} from './data.js';
 
 const INITIAL_COORDS = {
   lat: 35.68053,
@@ -50,34 +50,11 @@ resetButton.addEventListener('click', () => {
   mainPinMarker.setLatLng(
     INITIAL_COORDS,
   );
-  map.setView(
-    {
-      lat: 35.68053,
-      lng: 139.76889,
-    }, 15);
+  map.setView(INITIAL_COORDS, 15);
 });
 
-const points = [
-  {
-    title: 'Рестик',
-    lat: 35.67553,
-    lng: 139.74889,
-  },
-  {
-    title: 'Магаз с бухичем',
-    lat: 35.67353,
-    lng: 139.79189,
-  },
-  {
-    title: 'Шавуха',
-    lat: 35.66653,
-    lng: 139.77043,
-  },
-];
-
-points.forEach((point) => {
-  const {lat, lng} = point;
-
+adsArray.forEach((adsArray) => {
+  const {lat, lng} = adsArray.location;
   const icon = L.icon({
     iconUrl: 'https://assets.htmlacademy.ru/content/intensive/javascript-1/demo/interactive-map/pin.svg',
     iconSize: [40, 40],
@@ -97,7 +74,9 @@ points.forEach((point) => {
   marker
     .addTo(map)
     .bindPopup(
-      generateCard(advertise),
+      generateCard(adsArray),
+      {
+        keepInView: true,
+      },
     );
 });
-

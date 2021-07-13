@@ -1,6 +1,6 @@
-import {generateAds} from './data.js';
+import {generateAds, adsArray} from './data.js';
 
-const advertise = generateAds(1)[0];
+const advertise = adsArray[0];
 const popupElement = document.querySelector('#card').content
   .querySelector('.popup');
 
@@ -74,4 +74,4 @@ const generateCard = (ad) => {
 
 };
 
-export {generateCard, advertise};
+export {generateCard};
