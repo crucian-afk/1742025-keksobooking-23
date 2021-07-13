@@ -1,6 +1,3 @@
-import {generateAds, adsArray} from './data.js';
-
-const advertise = adsArray[0];
 const popupElement = document.querySelector('#card').content
   .querySelector('.popup');
 

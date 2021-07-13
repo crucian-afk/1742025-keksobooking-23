@@ -53,8 +53,8 @@ resetButton.addEventListener('click', () => {
   map.setView(INITIAL_COORDS, 15);
 });
 
-adsArray.forEach((adsArray) => {
-  const {lat, lng} = adsArray.location;
+adsArray.forEach((arr) => {
+  const {lat, lng} = arr.location;
   const icon = L.icon({
     iconUrl: 'https://assets.htmlacademy.ru/content/intensive/javascript-1/demo/interactive-map/pin.svg',
     iconSize: [40, 40],
@@ -74,7 +74,7 @@ adsArray.forEach((adsArray) => {
   marker
     .addTo(map)
     .bindPopup(
-      generateCard(adsArray),
+      generateCard(arr),
       {
         keepInView: true,
       },
