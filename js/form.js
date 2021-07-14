@@ -26,18 +26,18 @@ const houseTypesPrices = {
   palace: 10000,
 };
 
-adTitleInput.addEventListener('input', (event) => {
-  const valueLength = event.target.value.length;
+adTitleInput.addEventListener('input', (evt) => {
+  const valueLength = evt.target.value.length;
 
   if (valueLength < MIN_TITLE_LENGTH) {
-    event.target.setCustomValidity(`Ещё ${ MIN_TITLE_LENGTH - valueLength } символов`);
+    evt.target.setCustomValidity(`Ещё ${ MIN_TITLE_LENGTH - valueLength } символов`);
   } else if (valueLength > MAX_TITLE_LENGTH) {
-    event.target.setCustomValidity(`Слишком длинно, удалите ${ valueLength - MAX_TITLE_LENGTH } символов`);
+    evt.target.setCustomValidity(`Слишком длинное название, удалите ${ valueLength - MAX_TITLE_LENGTH } символов`);
   } else {
-    event.target.setCustomValidity('');
+    evt.target.setCustomValidity('');
   }
 
-  event.target.reportValidity();
+  evt.target.reportValidity();
 });
 
 let houseType = adTypeInput.value;
@@ -55,16 +55,16 @@ const priceValidation = (target) => {
 
 let minPrice = 0;
 
-adTypeInput.addEventListener('change', (event) => {
-  houseType = event.target.value;
-  minPrice = houseTypesPrices[event.target.value];
+adTypeInput.addEventListener('change', (evt) => {
+  houseType = evt.target.value;
+  minPrice = houseTypesPrices[evt.target.value];
   adPriceInput.placeholder = minPrice;
   adPriceInput.min = minPrice;
   priceValidation(adPriceInput);
 });
 
-adPriceInput.addEventListener('input', (event) => {
-  priceValidation(event.target);
+adPriceInput.addEventListener('input', (evt) => {
+  priceValidation(evt.target);
 });
 
 let amountOfRooms = 1;
@@ -84,12 +84,12 @@ const roomsValidation = (target) => {
   target.reportValidity();
 };
 
-roomCapacity.addEventListener('change', (event) => {
-  amountOfRooms = event.target.value;
+roomCapacity.addEventListener('change', (evt) => {
+  amountOfRooms = evt.target.value;
   roomsValidation(guestsCapacity);
 });
-guestsCapacity.addEventListener('change', (event) => {
-  roomsValidation(event.target);
+guestsCapacity.addEventListener('change', (evt) => {
+  roomsValidation(evt.target);
 });
 
 const fieldsets = document.querySelectorAll('fieldset');
@@ -115,5 +115,16 @@ const activateForm = () => {
     fieldset.disabled = false;
   });
 };
+
+const timeIn = document.querySelector('#timein');
+const timeOut = document.querySelector('#timeout');
+
+timeIn.addEventListener('change', (evt) => {
+  timeOut.value = evt.target.value;
+});
+
+timeOut.addEventListener('change', (evt) => {
+  timeIn.value = evt.target.value;
+});
 
 export {activateForm};
