@@ -38,10 +38,10 @@ const generateAds = (amountOfAds = 1) => {
         lng,
       },
     };
-    if (i <= 9) {
-      ad.author.avatar = `img/avatars/user0${i}.png`;
+    if (i < 10) {
+      ad.author.avatar = `img/avatars/user0${getRandomInt(1, 9)}.png`;
     } else {
-      ad.author.avatar = `img/avatars/user${i}.png`;
+      ad.author.avatar = `img/avatars/user${getRandomInt(10, 11)}.png`;
     }
 
     advertsList.push(ad);
@@ -50,4 +50,6 @@ const generateAds = (amountOfAds = 1) => {
   return advertsList;
 };
 
-export {generateAds};
+const adsArray = generateAds(10);
+
+export {generateAds, adsArray};
