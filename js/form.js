@@ -32,7 +32,7 @@ adTitleInput.addEventListener('input', (evt) => {
   if (valueLength < MIN_TITLE_LENGTH) {
     evt.target.setCustomValidity(`Ещё ${ MIN_TITLE_LENGTH - valueLength } символов`);
   } else if (valueLength > MAX_TITLE_LENGTH) {
-    evt.target.setCustomValidity(`Слишком длинно, удалите ${ valueLength - MAX_TITLE_LENGTH } символов`);
+    evt.target.setCustomValidity(`Слишком длинное название, удалите ${ valueLength - MAX_TITLE_LENGTH } символов`);
   } else {
     evt.target.setCustomValidity('');
   }
@@ -119,12 +119,12 @@ const activateForm = () => {
 const timeIn = document.querySelector('#timein');
 const timeOut = document.querySelector('#timeout');
 
-timeIn.addEventListener('change', () => {
-  timeOut.value = timeIn.value;
+timeIn.addEventListener('change', (evt) => {
+  timeOut.value = evt.target.value;
 });
 
-timeOut.addEventListener('change', () => {
-  timeIn.value = timeOut.value;
+timeOut.addEventListener('change', (evt) => {
+  timeIn.value = evt.target.value;
 });
 
 export {activateForm};
