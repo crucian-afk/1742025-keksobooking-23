@@ -39,36 +39,36 @@ const generateCard = (ad) => {
   popupPhoto.remove();
 
   const photosFragment = document.createDocumentFragment();
+  if (ad.offer.photos) {
+    for (let i = 0; i < ad.offer.photos.length; i++) {
+      const photo = document.createElement('img');
+      photo.src = ad.offer.photos[i];
+      photo.classList.add('popup__photo');
+      photo.width = 45;
+      photo.height = 40;
+      photo.alt = 'Фотография жилья';
+      photosFragment.appendChild(photo);
+    }
 
-  for (let i = 0; i < ad.offer.photos.length; i++) {
-    const photo = document.createElement('img');
-    photo.src = ad.offer.photos[i];
-    photo.classList.add('popup__photo');
-    photo.width = 45;
-    photo.height = 40;
-    photo.alt = 'Фотография жилья';
-    photosFragment.appendChild(photo);
+    popupPhotos.appendChild(photosFragment);
   }
-
-  popupPhotos.appendChild(photosFragment);
 
   popupType.textContent = houseType[ad.offer.type];
 
   for (const feat of popupFeatures) {
     let hasFeature = false;
-    for (let i = 0; i < popupFeatures.length; i++) {
-      if (feat.classList.contains(`popup__feature--${ad.offer.features[i]}`)) {
-        hasFeature = true;
+    if (ad.offer.features) {
+      for (let i = 0; i < popupFeatures.length; i++) {
+        if (feat.classList.contains(`popup__feature--${ad.offer.features[i]}`)) {
+          hasFeature = true;
+        }
+        if (!hasFeature) {
+          feat.remove();
+        }
       }
-
-    }
-    if (!hasFeature) {
-      feat.remove();
     }
   }
-
   return card;
-
 };
 
 export {generateCard};

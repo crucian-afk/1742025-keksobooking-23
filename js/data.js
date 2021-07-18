@@ -1,5 +1,5 @@
 import {getRandomInt, getRandomFloat, getRandomArrayElement, createArr} from './util.js';
-
+// в принципе, этот файл теперь полностью можно удалить?
 const TYPES = ['palace', 'flat', 'house', 'bungalow', 'hotel'];
 const TIME_OPTIONS = ['12:00', '13:00', '14:00'];
 const FEATURES = ['wifi', 'dishwasher', 'parking', 'washer', 'elevator', 'conditioner'];
