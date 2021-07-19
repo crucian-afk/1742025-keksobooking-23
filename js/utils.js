@@ -22,4 +22,6 @@ const createArr = ([...source], maxLength) => Array.from(
   () => source.splice(Math.random() * source.length | 0, 1)[0],
 );
 
-export {getRandomInt, getRandomFloat, getRandomArrayElement, createArr};
+const isEscEvent = (evt) => evt.key === 'Escape' || evt.key === 'Esc';
+
+export {getRandomInt, getRandomFloat, getRandomArrayElement, createArr, isEscEvent};

@@ -1,3 +1,7 @@
+import {sendData} from './api.js';
+import {isEscEvent} from './utils.js';
+import {resetAll} from './map.js';
+
 const MIN_TITLE_LENGTH = 30;
 const MAX_TITLE_LENGTH = 100;
 const MAX_PRICE = 1000000;
@@ -127,4 +131,58 @@ timeOut.addEventListener('change', (evt) => {
   timeIn.value = evt.target.value;
 });
 
-export {activateForm};
+const successMessage = document.querySelector('#success')
+  .content
+  .querySelector('.success');
+const errorMessage = document.querySelector('#error')
+  .content
+  .querySelector('.error');
+const tryAgainButton = errorMessage.querySelector('.error__button');
+
+const showMessage = (template) => {
+  const messageBody = template.cloneNode(true);
+  document.body.append(messageBody);
+
+  const checkEscKeydown = (evt) => {
+    if (isEscEvent(evt)) {
+      evt.preventDefault();
+      // eslint-disable-next-line no-use-before-define
+      removeMessage(messageBody);
+    }
+  };
+  // С какой-то стати обработчик нажатия кнопки не работает
+  const checkErrorButtonClick = () => {
+    // eslint-disable-next-line no-use-before-define
+    removeMessage(messageBody);
+  };
+  document.addEventListener('keydown', checkEscKeydown);
+  document.addEventListener('click', checkErrorButtonClick);
+  // этот обработчик на кнопке не работает, пришлось вместо него на документ прицепить
+  tryAgainButton.addEventListener('click', checkErrorButtonClick);
+  // без декларативного объявления не получится вовремя вызвать функцию
+  function removeMessage (message) {
+    message.remove();
+    document.removeEventListener('keydown', checkEscKeydown);
+    tryAgainButton.removeEventListener('click', checkErrorButtonClick);
+  }
+};
+const showSuccessMessage = () => {
+  showMessage(successMessage);
+  // функция сброса формы внезапно перестала работать
+  resetAll();
+};
+const showErrorMessage = () => {
+  showMessage(errorMessage);
+};
+
+adForm.addEventListener('submit', (evt) => {
+  evt.preventDefault();
+  const formData = new FormData(evt.target);
+  sendData(
+    showSuccessMessage,
+    showErrorMessage,
+    formData,
+  );
+});
+
+export {activateForm, adPriceInput, adTitleInput};
