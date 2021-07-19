@@ -1,4 +1,4 @@
-import {activateForm, adPriceInput} from './form.js';
+import {activateForm, adPriceInput, adTitleInput} from './form.js';
 import {generateCard} from './show-card.js';
 import './api.js';
 
@@ -10,7 +10,7 @@ const INITIAL_COORDS = {
 const formAddress = document.querySelector('#address');
 
 const map = L.map('map-canvas');
-const guestCapacityOption = document.querySelector('#capacity option:nth-child(3)')
+const guestCapacityOption = document.querySelector('#capacity option:nth-child(3)');
 
 const renderMap = () => {
   map.
@@ -18,8 +18,8 @@ const renderMap = () => {
       activateForm();
       adPriceInput.placeholder = '1000';
       guestCapacityOption.selected = true;
-      formAddress.readOnly = true;
       formAddress.value = `${INITIAL_COORDS.lat}, ${INITIAL_COORDS.lng}`;
+      formAddress.readOnly = true;
     })
     .setView(INITIAL_COORDS, 15);
 
@@ -60,10 +60,12 @@ const resetAll = () => {
   );
   formAddress.value = `${INITIAL_COORDS.lat}, ${INITIAL_COORDS.lng}`;
   map.setView(INITIAL_COORDS, 15);
+  adPriceInput.placeholder = '1000';
+  adPriceInput.value = '';
+  guestCapacityOption.selected = true;
+  adTitleInput.value = '';
 };
-resetButton.addEventListener('click', () => {
-  resetAll();
-});
+resetButton.addEventListener('click', resetAll);
 
 const createPin = (array) => {
   array.forEach((arr) => {

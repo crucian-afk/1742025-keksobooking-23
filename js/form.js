@@ -185,4 +185,4 @@ adForm.addEventListener('submit', (evt) => {
   );
 });
 
-export {activateForm, adPriceInput};
+export {activateForm, adPriceInput, adTitleInput};
