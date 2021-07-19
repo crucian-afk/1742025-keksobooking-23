@@ -34,7 +34,7 @@ const showErrorPopup = (errorText) => {
   document.querySelector('body').appendChild(div);
 };
 
-const getData = (onFail) => {
+const getData = (onSuccess, onFail) => {
   fetch(GET_DATA_URL)
     .then((response) => {
       if (response.ok) {
@@ -42,12 +42,12 @@ const getData = (onFail) => {
       }
     })
     .then((ads) => {
-      createPin(ads.slice(0, 10));
+      onSuccess(ads.slice(0, 10));
     })
     .catch((error) => onFail(error));
 };
 
-getData(showErrorPopup);
+getData(createPin, showErrorPopup);
 
 const sendData = (onSuccess, onFail, body) => {
   fetch(SEND_DATA_URL,

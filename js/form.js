@@ -1,5 +1,5 @@
 import {sendData} from './api.js';
-import {isEscEvent} from './util.js';
+import {isEscEvent} from './utils.js';
 import {resetAll} from './map.js';
 
 const MIN_TITLE_LENGTH = 30;
@@ -185,4 +185,4 @@ adForm.addEventListener('submit', (evt) => {
   );
 });
 
-export {activateForm};
+export {activateForm, adPriceInput};

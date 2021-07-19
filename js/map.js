@@ -1,4 +1,4 @@
-import {activateForm} from './form.js';
+import {activateForm, adPriceInput} from './form.js';
 import {generateCard} from './show-card.js';
 import './api.js';
 
@@ -10,11 +10,15 @@ const INITIAL_COORDS = {
 const formAddress = document.querySelector('#address');
 
 const map = L.map('map-canvas');
+const guestCapacityOption = document.querySelector('#capacity option:nth-child(3)')
+
 const renderMap = () => {
   map.
     on('load', () => {
       activateForm();
-      formAddress.readonly = true;
+      adPriceInput.placeholder = '1000';
+      guestCapacityOption.selected = true;
+      formAddress.readOnly = true;
       formAddress.value = `${INITIAL_COORDS.lat}, ${INITIAL_COORDS.lng}`;
     })
     .setView(INITIAL_COORDS, 15);
